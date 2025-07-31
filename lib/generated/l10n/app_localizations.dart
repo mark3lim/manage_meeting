@@ -133,6 +133,12 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'확인'**
   String get confirmButton;
+
+  /// 잘못된 비밀번호를 입력했을 때 표시되는 오류 메시지
+  ///
+  /// In ko, this message translates to:
+  /// **'비밀번호가 틀렸습니다.'**
+  String get loginErrorPasswordIncorrect;
 }
 
 class _AppLocalizationsDelegate

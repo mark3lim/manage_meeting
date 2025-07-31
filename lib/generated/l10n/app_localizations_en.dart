@@ -25,4 +25,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmButton => 'Confirm';
+
+  @override
+  String get loginErrorPasswordIncorrect => 'Incorrect password.';
 }

@@ -25,4 +25,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get confirmButton => '확인';
+
+  @override
+  String get loginErrorPasswordIncorrect => '비밀번호가 틀렸습니다.';
 }

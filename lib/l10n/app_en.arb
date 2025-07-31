@@ -23,5 +23,9 @@
   "confirmButton": "Confirm",
   "@confirmButton": {
     "description": "The text for the confirm button"
+  },
+  "loginErrorPasswordIncorrect": "Incorrect password.",
+  "@loginErrorPasswordIncorrect": {
+    "description": "Error message displayed for incorrect password entry"
   }
 }
