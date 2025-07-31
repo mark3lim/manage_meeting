@@ -9,11 +9,20 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Task Manager';
+  String get appTitle => 'Meeting Manager';
 
   @override
-  String get loginPasswordPrompt => 'Enter your 4-digit password';
+  String get splashScreenTitle => 'Meeting Management App';
 
   @override
-  String get loginPasswordLabel => 'Password';
+  String get loginPageTitle => 'Enter Password';
+
+  @override
+  String get passwordLabel => 'Password';
+
+  @override
+  String get passwordHint => 'Enter 4-digit number';
+
+  @override
+  String get confirmButton => 'Confirm';
 }

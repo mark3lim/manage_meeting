@@ -1,15 +1,27 @@
 {
   "@@locale": "ko",
-  "appTitle": "Task Manager",
+  "appTitle": "회의 관리 앱",
   "@appTitle": {
-    "description": "The title of the application"
+    "description": "애플리케이션의 전체 제목"
   },
-  "loginPasswordPrompt": "비밀번호 4자리를 입력하세요",
-  "@loginPasswordPrompt": {
-    "description": "Prompt for the user to enter their 4-digit password"
+  "splashScreenTitle": "회의 관리 앱",
+  "@splashScreenTitle": {
+    "description": "스플래시 화면에 표시되는 제목"
   },
-  "loginPasswordLabel": "비밀번호",
-  "@loginPasswordLabel": {
-    "description": "Label for the password input field"
+  "loginPageTitle": "비밀번호 입력",
+  "@loginPageTitle": {
+    "description": "로그인 페이지의 제목"
+  },
+  "passwordLabel": "비밀번호",
+  "@passwordLabel": {
+    "description": "비밀번호 입력 필드의 라벨"
+  },
+  "passwordHint": "4자리 숫자를 입력하세요",
+  "@passwordHint": {
+    "description": "비밀번호 입력 필드의 힌트 텍스트"
+  },
+  "confirmButton": "확인",
+  "@confirmButton": {
+    "description": "확인 버튼의 텍스트"
   }
 }

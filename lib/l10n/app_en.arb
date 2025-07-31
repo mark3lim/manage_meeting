@@ -1,15 +1,27 @@
 {
   "@@locale": "en",
-  "appTitle": "Task Manager",
+  "appTitle": "Meeting Manager",
   "@appTitle": {
-    "description": "The title of the application"
+    "description": "The overall title of the application"
   },
-  "loginPasswordPrompt": "Enter your 4-digit password",
-  "@loginPasswordPrompt": {
-    "description": "Prompt for the user to enter their 4-digit password"
+  "splashScreenTitle": "Meeting Management App",
+  "@splashScreenTitle": {
+    "description": "The title displayed on the splash screen"
   },
-  "loginPasswordLabel": "Password",
-  "@loginPasswordLabel": {
-    "description": "Label for the password input field"
+  "loginPageTitle": "Enter Password",
+  "@loginPageTitle": {
+    "description": "The title of the login page"
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "The label for the password input field"
+  },
+  "passwordHint": "Enter 4-digit number",
+  "@passwordHint": {
+    "description": "The hint text for the password input field"
+  },
+  "confirmButton": "Confirm",
+  "@confirmButton": {
+    "description": "The text for the confirm button"
   }
 }

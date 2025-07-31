@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:manage_meeting/generated/l10n/app_localizations.dart';
 
 /// LoginPage 클래스는 사용자가 비밀번호를 입력하는 화면을 표시하는 StatefulWidget 입니다.
 ///
@@ -54,9 +55,9 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          '비밀번호 입력',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)!.loginPageTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -65,17 +66,17 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: passwordFieldTop > 0 ? passwordFieldTop : 0),
-            const Text(
-              '비밀번호',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+              AppLocalizations.of(context)!.passwordLabel,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8.0),
             TextField(
               controller: _passwordController,
               style: const TextStyle(fontWeight: FontWeight.bold),
-              decoration: const InputDecoration(
-                hintText: '4자리 숫자를 입력하세요',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context)!.passwordHint,
+                border: const OutlineInputBorder(),
                 counterText: '',
               ),
               keyboardType: TextInputType.number,
@@ -103,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   // TODO: 비밀번호 확인 로직 구현
                 },
-                child: const Text('확인'),
+                child: Text(AppLocalizations.of(context)!.confirmButton),
               ),
             ),
             const Spacer(),

@@ -98,23 +98,41 @@ abstract class AppLocalizations {
     Locale('ko'),
   ];
 
-  /// The title of the application
+  /// 애플리케이션의 전체 제목
   ///
   /// In ko, this message translates to:
-  /// **'Task Manager'**
+  /// **'회의 관리 앱'**
   String get appTitle;
 
-  /// Prompt for the user to enter their 4-digit password
+  /// 스플래시 화면에 표시되는 제목
   ///
   /// In ko, this message translates to:
-  /// **'비밀번호 4자리를 입력하세요'**
-  String get loginPasswordPrompt;
+  /// **'회의 관리 앱'**
+  String get splashScreenTitle;
 
-  /// Label for the password input field
+  /// 로그인 페이지의 제목
+  ///
+  /// In ko, this message translates to:
+  /// **'비밀번호 입력'**
+  String get loginPageTitle;
+
+  /// 비밀번호 입력 필드의 라벨
   ///
   /// In ko, this message translates to:
   /// **'비밀번호'**
-  String get loginPasswordLabel;
+  String get passwordLabel;
+
+  /// 비밀번호 입력 필드의 힌트 텍스트
+  ///
+  /// In ko, this message translates to:
+  /// **'4자리 숫자를 입력하세요'**
+  String get passwordHint;
+
+  /// 확인 버튼의 텍스트
+  ///
+  /// In ko, this message translates to:
+  /// **'확인'**
+  String get confirmButton;
 }
 
 class _AppLocalizationsDelegate

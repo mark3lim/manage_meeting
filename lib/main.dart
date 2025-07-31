@@ -35,13 +35,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Task Manager',
+      title: 'Meeting Manager',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       home: const SplashScreen(),
     );
   }
@@ -99,15 +100,15 @@ class _SplashScreenState extends State<SplashScreen> {
   /// @return 화면에 표시될 위젯을 반환합니다.
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
           Expanded(
             child: Center(
-              child: Text('회의 관리 앱'),
+              child: Text(AppLocalizations.of(context)!.splashScreenTitle),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(bottom: 32.0),
             child: Text('Made by ML'),
           ),
