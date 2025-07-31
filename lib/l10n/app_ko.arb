@@ -1,0 +1,15 @@
+{
+  "@@locale": "ko",
+  "appTitle": "Task Manager",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "loginPasswordPrompt": "비밀번호 4자리를 입력하세요",
+  "@loginPasswordPrompt": {
+    "description": "Prompt for the user to enter their 4-digit password"
+  },
+  "loginPasswordLabel": "비밀번호",
+  "@loginPasswordLabel": {
+    "description": "Label for the password input field"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "appTitle": "Task Manager",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "loginPasswordPrompt": "Enter your 4-digit password",
+  "@loginPasswordPrompt": {
+    "description": "Prompt for the user to enter their 4-digit password"
+  },
+  "loginPasswordLabel": "Password",
+  "@loginPasswordLabel": {
+    "description": "Label for the password input field"
+  }
+}
