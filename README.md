@@ -1,3 +1,5 @@
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/mark3lim/manage_meeting?utm_source=oss&utm_medium=github&utm_campaign=mark3lim%2Fmanage_meeting&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+
 # manage_meeting
 
 A new Flutter project.
