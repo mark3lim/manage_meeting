@@ -51,5 +51,9 @@
   "upcomingEventsNotesTitle": "내용",
   "@descriptionTitle": {
     "description": "다가오는 일정에서 내용을 표시하는 섹션의 제목"
+  },
+  "noUpcomingEvents": "다가오는 일정이 없습니다.",
+  "@noUpcomingEvents": {
+    "description": "다가오는 일정이 없을 때 표시되는 메시지"
   }
 }

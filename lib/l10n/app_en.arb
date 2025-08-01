@@ -51,5 +51,9 @@
   "upcomingEventsNotesTitle": "Notes",
   "@descriptionTitle": {
     "description": "Ttile for the section displaying the notes of the Upcoming Events"
+  },
+  "noUpcomingEvents": "No upcoming events.",
+  "@noUpcomingEvents": {
+    "description": "Message displayed when there are no upcoming events."
   }
 }

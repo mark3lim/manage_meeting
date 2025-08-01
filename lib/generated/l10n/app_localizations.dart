@@ -175,6 +175,12 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'내용'**
   String get upcomingEventsNotesTitle;
+
+  /// 다가오는 일정이 없을 때 표시되는 메시지
+  ///
+  /// In ko, this message translates to:
+  /// **'다가오는 일정이 없습니다.'**
+  String get noUpcomingEvents;
 }
 
 class _AppLocalizationsDelegate

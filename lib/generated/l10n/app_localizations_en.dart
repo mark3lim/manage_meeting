@@ -47,4 +47,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upcomingEventsNotesTitle => 'Notes';
+
+  @override
+  String get noUpcomingEvents => 'No upcoming events.';
 }

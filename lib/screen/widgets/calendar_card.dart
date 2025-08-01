@@ -3,13 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:manage_meeting/viewmodel/home_page_viewmodel.dart';
 
-/// [CalendarCard]는 홈 화면에 표시되는 달력 위젯입니다.
+/// [CalendarCard]는 홈 화면에 월별 달력을 표시하는 위젯입니다.
 ///
-/// [ConsumerWidget]으로 구현되어 ViewModel의 상태 변화를 감지하고 UI를 업데이트합니다.
+/// [ConsumerWidget]으로 구현되어 [homePageProvider]를 통해 현재 선택된 달의 상태를
+/// 관리하고, 사용자가 이전/다음 달로 이동할 수 있는 상호작용을 제공합니다.
 class CalendarCard extends ConsumerWidget {
   /// [CalendarCard]의 생성자입니다.
+  ///
+  /// @param key 위젯의 고유 식별자입니다.
   const CalendarCard({super.key});
 
+  /// 위젯의 UI를 빌드합니다.
+  ///
+  /// @param context 위젯 트리에서의 위치 정보를 담은 [BuildContext].
+  /// @param ref 프로바이더를 읽고 상호작용하기 위한 [WidgetRef].
+  /// @return 빌드된 [Widget].
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentDate = ref.watch(homePageProvider);
@@ -22,7 +30,7 @@ class CalendarCard extends ConsumerWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
         side: BorderSide(
-          color: Theme.of(context).colorScheme.outline, 
+          color: Theme.of(context).colorScheme.outline,
           width: 1.0
         ),
       ),
@@ -36,7 +44,12 @@ class CalendarCard extends ConsumerWidget {
     );
   }
 
-  /// 달력의 헤더(년/월 및 이전/다음 버튼)를 빌드합니다.
+  /// 달력의 헤더(년/월 및 이전/다음 달 이동 버튼)를 생성합니다.
+  ///
+  /// @param context [BuildContext] 객체.
+  /// @param currentDate 현재 달력에 표시된 날짜.
+  /// @param viewModel [HomePageViewModel] 인스턴스.
+  /// @return 헤더 부분을 나타내는 [Widget].
   Widget _buildCalendarHeader(
       BuildContext context, DateTime currentDate, HomePageViewModel viewModel) {
     final locale = Localizations.localeOf(context).languageCode;
@@ -62,7 +75,11 @@ class CalendarCard extends ConsumerWidget {
     );
   }
 
-  /// 달력의 날짜 부분을 빌드합니다.
+  /// 달력의 날짜(요일 및 일자) 부분을 격자 형태로 생성합니다.
+  ///
+  /// @param context [BuildContext] 객체.
+  /// @param currentDate 현재 달력에 표시된 날짜.
+  /// @return 날짜 그리드를 나타내는 [Widget].
   Widget _buildCalendarDays(BuildContext context, DateTime currentDate) {
     final daysInMonth =
         DateUtils.getDaysInMonth(currentDate.year, currentDate.month);

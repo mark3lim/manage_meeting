@@ -46,4 +46,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get upcomingEventsNotesTitle => '내용';
+
+  @override
+  String get noUpcomingEvents => '다가오는 일정이 없습니다.';
 }
