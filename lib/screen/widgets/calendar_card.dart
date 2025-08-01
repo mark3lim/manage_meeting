@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:manage_meeting/viewmodel/home_page_viewmodel.dart';
+import 'package:manage_meeting/viewmodel/schedule_viewmodel.dart';
 
 /// [CalendarCard]는 홈 화면에 월별 달력을 표시하는 위젯입니다.
 ///
@@ -38,7 +39,7 @@ class CalendarCard extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildCalendarHeader(context, currentDate, viewModel),
-          _buildCalendarDays(context, currentDate),
+          _buildCalendarDays(context, currentDate, ref),
         ],
       ),
     );
@@ -79,8 +80,16 @@ class CalendarCard extends ConsumerWidget {
   ///
   /// @param context [BuildContext] 객체.
   /// @param currentDate 현재 달력에 표시된 날짜.
+  /// @param ref [WidgetRef] 객체.
   /// @return 날짜 그리드를 나타내는 [Widget].
-  Widget _buildCalendarDays(BuildContext context, DateTime currentDate) {
+  Widget _buildCalendarDays(BuildContext context, DateTime currentDate, WidgetRef ref) {
+    final schedulesAsyncValue = ref.watch(scheduleProvider);
+    final scheduledDates = schedulesAsyncValue.when(
+      data: (schedules) => schedules.map((s) => s.date).toList(),
+      loading: () => [],
+      error: (e, s) => [],
+    );
+
     final daysInMonth =
         DateUtils.getDaysInMonth(currentDate.year, currentDate.month);
     final firstDayOfMonth = DateTime(currentDate.year, currentDate.month, 1);
@@ -133,29 +142,45 @@ class CalendarCard extends ConsumerWidget {
             final isSunday = date.weekday == DateTime.sunday;
             final isSaturday = date.weekday == DateTime.saturday;
             final isToday = DateUtils.isSameDay(date, today);
+            final hasEvent = scheduledDates.any((d) => DateUtils.isSameDay(d, date));
 
-            return Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.all(4.0),
-              decoration: isToday
-                  ? BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      shape: BoxShape.circle,
-                    )
-                  : null,
-              child: Text(
-                '$day',
-                style: TextStyle(
-                  color: isToday
-                      ? Theme.of(context).colorScheme.onPrimary
-                      : (isSunday
-                          ? Colors.red
-                          : (isSaturday
-                              ? Colors.blue
-                              : Theme.of(context).colorScheme.onSurface)),
-                  fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.all(4.0),
+                  decoration: isToday
+                      ? BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          shape: BoxShape.circle,
+                        )
+                      : null,
+                  child: Text(
+                    '$day',
+                    style: TextStyle(
+                      color: isToday
+                          ? Theme.of(context).colorScheme.onPrimary
+                          : (isSunday
+                              ? Colors.red
+                              : (isSaturday
+                                  ? Colors.blue
+                                  : Theme.of(context).colorScheme.onSurface)),
+                      fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
+                    ),
+                  ),
                 ),
-              ),
+                if (hasEvent)
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 8.0),
+                    width: 6.0,
+                    height: 6.0,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFFF9800),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+              ],
             );
           },
         ),

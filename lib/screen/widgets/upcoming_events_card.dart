@@ -38,7 +38,10 @@ class UpcomingEventsCard extends ConsumerWidget {
         // 비동기 상태(로딩, 오류, 데이터)에 따라 다른 위젯을 렌더링합니다.
         schedulesAsyncValue.when(
           // 데이터 로딩 중일 때 원형 진행 표시기를 보여줍니다.
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const Padding(
+            padding: EdgeInsets.only(top: 40.0),
+            child: Center(child: CircularProgressIndicator()),
+          ),
           // 오류가 발생했을 때 오류 메시지를 보여줍니다.
           error: (err, stack) => Center(child: Text('Error: $err')),
           // 데이터 로딩에 성공했을 때 일정 목록 또는 "일정 없음" 메시지를 보여줍니다.

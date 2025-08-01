@@ -39,6 +39,8 @@ class _LoginPageState extends State<LoginPage> {
     final enteredPassword = _passwordController.text;
 
     if (enteredPassword == correctPassword) {
+      // 홈 화면으로 이동하기 전에 현재 표시된 스낵바를 모두 제거합니다.
+      ScaffoldMessenger.of(context).clearSnackBars();
       // GoRouter를 사용하여 홈 화면으로 이동합니다.
       context.go('/home');
     } else {
@@ -86,10 +88,13 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 16.0),
               TextField(
                 controller: _passwordController,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                 decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.passwordHint,
                   border: const OutlineInputBorder(),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
                   counterText: '',
                 ),
                 keyboardType: TextInputType.number,
