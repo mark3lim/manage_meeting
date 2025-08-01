@@ -1,31 +1,35 @@
 {
   "@@locale": "ko",
-  "appTitle": "회의 관리 앱",
+  "appTitle": "미팅 관리",
   "@appTitle": {
     "description": "애플리케이션의 전체 제목"
   },
-  "splashScreenTitle": "회의 관리 앱",
-  "@splashScreenTitle": {
-    "description": "스플래시 화면에 표시되는 제목"
-  },
   "loginPageTitle": "비밀번호 입력",
   "@loginPageTitle": {
-    "description": "로그인 페이지의 제목"
+    "description": "사용자가 비밀번호를 입력하는 로그인 페이지의 제목"
   },
   "passwordLabel": "비밀번호",
   "@passwordLabel": {
-    "description": "비밀번호 입력 필드의 라벨"
+    "description": "비밀번호 입력 필드 위에 표시되는 라벨"
   },
-  "passwordHint": "4자리 숫자를 입력하세요",
+  "passwordHint": "4자리 비밀번호를 입력하세요",
   "@passwordHint": {
-    "description": "비밀번호 입력 필드의 힌트 텍스트"
+    "description": "비밀번호 입력 필드의 플레이스홀더 텍스트"
   },
   "confirmButton": "확인",
   "@confirmButton": {
-    "description": "확인 버튼의 텍스트"
+    "description": "로그인과 같은 작업을 확인하는 버튼의 텍스트"
   },
-  "loginErrorPasswordIncorrect": "비밀번호가 틀렸습니다.",
+  "loginErrorPasswordIncorrect": "비밀번호가 틀렸습니다. 다시 시도해주세요.",
   "@loginErrorPasswordIncorrect": {
-    "description": "잘못된 비밀번호를 입력했을 때 표시되는 오류 메시지"
+    "description": "사용자가 잘못된 비밀번호를 입력했을 때 표시되는 오류 메시지"
+  },
+  "homePageTitle": "오늘의 미팅",
+  "@homePageTitle": {
+    "description": "홈페이지에 표시되는 메인 제목"
+  },
+  "menuPageTitle": "메뉴",
+  "@menuPageTitle": {
+    "description": "메뉴 페이지의 제목"
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:manage_meeting/generated/l10n/app_localizations.dart';
-import 'package:manage_meeting/screen/HomePage.dart';
 
 /// [LoginPage] 클래스는 사용자가 비밀번호를 입력하는 화면을 표시하는 [StatefulWidget] 입니다.
 ///
@@ -39,16 +39,14 @@ class _LoginPageState extends State<LoginPage> {
     final enteredPassword = _passwordController.text;
 
     if (enteredPassword == correctPassword) {
-      // 비밀번호가 맞으면 홈 화면으로 이동합니다.
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomePage()),
-      );
+      // GoRouter를 사용하여 홈 화면으로 이동합니다.
+      context.go('/home');
     } else {
       // 비밀번호가 틀리면 스낵바를 표시합니다.
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.loginErrorPasswordIncorrect),
-          backgroundColor: Colors.red,
+          backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
       // 입력 필드를 초기화합니다.
@@ -80,11 +78,10 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Spacer(flex: 2), // UI를 수직 중앙에 가깝게 배치하기 위해 Spacer를 사용합니다.
+              const Spacer(flex: 2),
               Text(
                 AppLocalizations.of(context)!.loginPageTitle,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 16.0),
               TextField(
@@ -122,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(AppLocalizations.of(context)!.confirmButton),
                 ),
               ),
-              Spacer(flex: MediaQuery.of(context).size.height > 600 ? 2 : 1), // 하단 텍스트를 화면 아래에 고정시키기 위해 Spacer를 사용합니다.
+              const Spacer(flex: 3),
               const Center(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 32.0),

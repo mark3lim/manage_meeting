@@ -12,20 +12,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Meeting Manager';
 
   @override
-  String get splashScreenTitle => 'Meeting Management App';
-
-  @override
   String get loginPageTitle => 'Enter Password';
 
   @override
   String get passwordLabel => 'Password';
 
   @override
-  String get passwordHint => 'Enter 4-digit number';
+  String get passwordHint => 'Enter your 4-digit password';
 
   @override
   String get confirmButton => 'Confirm';
 
   @override
-  String get loginErrorPasswordIncorrect => 'Incorrect password.';
+  String get loginErrorPasswordIncorrect =>
+      'Incorrect password. Please try again.';
+
+  @override
+  String get homePageTitle => 'Today\'s Meetings';
+
+  @override
+  String get menuPageTitle => 'Menu';
 }

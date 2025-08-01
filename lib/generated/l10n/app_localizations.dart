@@ -101,44 +101,50 @@ abstract class AppLocalizations {
   /// 애플리케이션의 전체 제목
   ///
   /// In ko, this message translates to:
-  /// **'회의 관리 앱'**
+  /// **'미팅 관리'**
   String get appTitle;
 
-  /// 스플래시 화면에 표시되는 제목
-  ///
-  /// In ko, this message translates to:
-  /// **'회의 관리 앱'**
-  String get splashScreenTitle;
-
-  /// 로그인 페이지의 제목
+  /// 사용자가 비밀번호를 입력하는 로그인 페이지의 제목
   ///
   /// In ko, this message translates to:
   /// **'비밀번호 입력'**
   String get loginPageTitle;
 
-  /// 비밀번호 입력 필드의 라벨
+  /// 비밀번호 입력 필드 위에 표시되는 라벨
   ///
   /// In ko, this message translates to:
   /// **'비밀번호'**
   String get passwordLabel;
 
-  /// 비밀번호 입력 필드의 힌트 텍스트
+  /// 비밀번호 입력 필드의 플레이스홀더 텍스트
   ///
   /// In ko, this message translates to:
-  /// **'4자리 숫자를 입력하세요'**
+  /// **'4자리 비밀번호를 입력하세요'**
   String get passwordHint;
 
-  /// 확인 버튼의 텍스트
+  /// 로그인과 같은 작업을 확인하는 버튼의 텍스트
   ///
   /// In ko, this message translates to:
   /// **'확인'**
   String get confirmButton;
 
-  /// 잘못된 비밀번호를 입력했을 때 표시되는 오류 메시지
+  /// 사용자가 잘못된 비밀번호를 입력했을 때 표시되는 오류 메시지
   ///
   /// In ko, this message translates to:
-  /// **'비밀번호가 틀렸습니다.'**
+  /// **'비밀번호가 틀렸습니다. 다시 시도해주세요.'**
   String get loginErrorPasswordIncorrect;
+
+  /// 홈페이지에 표시되는 메인 제목
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘의 미팅'**
+  String get homePageTitle;
+
+  /// 메뉴 페이지의 제목
+  ///
+  /// In ko, this message translates to:
+  /// **'메뉴'**
+  String get menuPageTitle;
 }
 
 class _AppLocalizationsDelegate

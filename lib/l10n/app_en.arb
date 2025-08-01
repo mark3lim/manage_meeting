@@ -2,30 +2,34 @@
   "@@locale": "en",
   "appTitle": "Meeting Manager",
   "@appTitle": {
-    "description": "The overall title of the application"
-  },
-  "splashScreenTitle": "Meeting Management App",
-  "@splashScreenTitle": {
-    "description": "The title displayed on the splash screen"
+    "description": "The title of the application"
   },
   "loginPageTitle": "Enter Password",
   "@loginPageTitle": {
-    "description": "The title of the login page"
+    "description": "Title for the login page where users enter their password"
   },
   "passwordLabel": "Password",
   "@passwordLabel": {
-    "description": "The label for the password input field"
+    "description": "Label displayed above the password input field"
   },
-  "passwordHint": "Enter 4-digit number",
+  "passwordHint": "Enter your 4-digit password",
   "@passwordHint": {
-    "description": "The hint text for the password input field"
+    "description": "Placeholder text for the password input field"
   },
   "confirmButton": "Confirm",
   "@confirmButton": {
-    "description": "The text for the confirm button"
+    "description": "Text for the button that confirms an action, like logging in"
   },
-  "loginErrorPasswordIncorrect": "Incorrect password.",
+  "loginErrorPasswordIncorrect": "Incorrect password. Please try again.",
   "@loginErrorPasswordIncorrect": {
-    "description": "Error message displayed for incorrect password entry"
+    "description": "Error message shown when the user enters an incorrect password"
+  },
+  "homePageTitle": "Today's Meetings",
+  "@homePageTitle": {
+    "description": "The main title displayed on the home page"
+  },
+  "menuPageTitle": "Menu",
+  "@menuPageTitle": {
+    "description": "Title for the menu page"
   }
 }

@@ -1,119 +1,75 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:manage_meeting/generated/l10n/app_localizations.dart';
-import 'package:manage_meeting/LoginPage.dart';
+import 'package:manage_meeting/router.dart';
 
-/// Flutter 애플리케이션의 최상위 진입점입니다.
-///
-/// 이 함수는 앱을 실행하고 Riverpod 상태 관리를 위한 ProviderScope로 앱의 루트 위젯을 감쌉니다.
+/// 앱의 메인 진입점입니다.
 void main() {
   runApp(
+    // Riverpod를 사용하기 위해 ProviderScope로 앱을 감쌉니다.
     const ProviderScope(
       child: MyApp(),
     ),
   );
 }
 
-/// MyApp 클래스는 애플리케이션의 루트 위젯입니다.
+/// [MyApp] 클래스는 애플리케이션의 루트 위젯입니다.
 ///
-/// 이 위젯은 앱의 기본 테마, 라우팅 및 현지화를 설정하는 MaterialApp을 구성합니다.
+/// 이 위젯은 [MaterialApp.router]를 사용하여 GoRouter와 통합되고,
+/// 앱의 테마, 로컬라이제이션 등을 설정합니다.
 class MyApp extends StatelessWidget {
-  /// MyApp의 생성자입니다.
-  ///
-  /// [key]는 위젯 트리의 특정 위치에 있는 위젯을 식별하는 데 사용됩니다.
+  /// [MyApp]의 생성자입니다.
   const MyApp({super.key});
 
   /// 이 위젯은 애플리케이션의 루트입니다.
   ///
-  /// MaterialApp을 설정하고 앱의 전반적인 모양과 느낌을 정의합니다.
-  ///
-  /// @param context 위젯의 위치를 알려주는 BuildContext 객체입니다.
-  /// @return 앱의 루트 위젯을 반환합니다.
+  /// @param context 위젯 트리 내에서 위젯의 위치를 식별하는 데 사용되는 [BuildContext] 객체입니다.
+  /// @return 화면에 표시될 [Widget]을 반환합니다.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      // 라우터 설정을 GoRouter 인스턴스로 지정합니다.
+      routerConfig: router,
+      // 디버그 배너를 숨깁니다.
       debugShowCheckedModeBanner: false,
+      // 앱의 제목을 설정합니다.
       title: 'Meeting Manager',
+      // 앱의 테마를 설정합니다.
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // Material Design 3를 활성화합니다.
         useMaterial3: true,
+        // 앱의 기본 색상 팔레트를 정의합니다.
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFB4CBF0),
+          // 주요 색상들을 직접 지정합니다.
+          primary: Colors.red, // 오늘 날짜 표시 등에 사용
+          surface: Colors.white, // 카드 배경색
+          outline: const Color(0xFF888888), // 카드 테두리색
+          onSurface: Colors.black, // 기본 텍스트 색상
+          onPrimary: Colors.white, // Primary 색상 위의 텍스트 색상
+        ),
+        // 앱의 기본 텍스트 스타일을 정의합니다.
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+          titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          bodyMedium: TextStyle(fontSize: 16),
+        ),
+        // 앱 전체에 사용될 기본 폰트 패밀리를 지정합니다.
+        // (요구사항에 따라 시스템 폰트 사용)
+        fontFamily: null,
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // 로컬라이제이션 설정을 합니다.
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      // 지원하는 언어를 설정합니다.
       supportedLocales: AppLocalizations.supportedLocales,
+      // 타이틀을 현지화합니다.
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
-      home: const SplashScreen(),
-    );
-  }
-}
-
-/// SplashScreen 클래스는 앱이 시작될 때 표시되는 초기 화면입니다.
-///
-/// 이 화면은 잠시 동안 앱의 브랜딩이나 로딩 상태를 보여준 후 메인 화면으로 전환됩니다.
-class SplashScreen extends StatefulWidget {
-  /// SplashScreen의 생성자입니다.
-  ///
-  /// [key]는 위젯 트리의 특정 위치에 있는 위젯을 식별하는 데 사용됩니다.
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-/// _SplashScreenState 클래스는 SplashScreen의 상태를 관리합니다.
-///
-/// 이 클래스는 화면 전환을 위한 타이머를 관리하고 화면의 UI를 구성합니다.
-class _SplashScreenState extends State<SplashScreen> {
-  /// 화면 전환을 제어하는 타이머 객체입니다.
-  Timer? _timer;
-
-  /// 위젯이 처음으로 생성될 때 호출됩니다.
-  ///
-  /// 여기서는 2초 후에 LoginPage로 이동하는 타이머를 설정합니다.
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer(const Duration(seconds: 2), () {
-      if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const LoginPage()),
-        );
-      }
-    });
-  }
-
-  /// 위젯이 위젯 트리에서 영구적으로 제거될 때 호출됩니다.
-  ///
-  /// 여기서는 _timer를 취소하여 메모리 누수를 방지합니다.
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  /// 화면의 사용자 인터페이스(UI)를 빌드합니다.
-  ///
-  /// 이 메소드는 위젯이 화면에 그려질 때마다 호출됩니다.
-  ///
-  /// @param context 위젯의 위치를 알려주는 BuildContext 객체입니다.
-  /// @return 화면에 표시될 위젯을 반환합니다.
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Center(
-              child: Text(AppLocalizations.of(context)!.splashScreenTitle),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 32.0),
-            child: Text('Made by ML'),
-          ),
-        ],
-      ),
     );
   }
 }
