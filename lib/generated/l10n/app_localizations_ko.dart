@@ -9,7 +9,7 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get appTitle => '미팅 관리';
+  String get appTitle => '미팅 관리자';
 
   @override
   String get loginPageTitle => '비밀번호 입력';
@@ -31,4 +31,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get menuPageTitle => '메뉴';
+
+  @override
+  String get upcomingEventsTitle => '다가오는 일정';
 }

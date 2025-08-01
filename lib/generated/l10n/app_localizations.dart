@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// 애플리케이션의 전체 제목
   ///
   /// In ko, this message translates to:
-  /// **'미팅 관리'**
+  /// **'미팅 관리자'**
   String get appTitle;
 
   /// 사용자가 비밀번호를 입력하는 로그인 페이지의 제목
@@ -145,6 +145,12 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'메뉴'**
   String get menuPageTitle;
+
+  /// 다가오는 일정을 표시하는 섹션의 제목
+  ///
+  /// In ko, this message translates to:
+  /// **'다가오는 일정'**
+  String get upcomingEventsTitle;
 }
 
 class _AppLocalizationsDelegate

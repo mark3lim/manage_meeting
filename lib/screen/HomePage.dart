@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:manage_meeting/generated/l10n/app_localizations.dart';
 import 'package:manage_meeting/screen/widgets/calendar_card.dart';
 import 'package:manage_meeting/screen/widgets/glassmorphic_bottom_nav_bar.dart';
+import 'package:manage_meeting/screen/widgets/upcoming_events_card.dart';
 
 /// [HomePage] 클래스는 로그인 성공 후 표시되는 메인 화면을 구성하는 [ConsumerWidget] 입니다.
 ///
@@ -30,15 +31,15 @@ class HomePage extends ConsumerWidget {
         bottom: false, // 하단 SafeArea는 네비게이션 바에서 직접 처리
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0), // 하단 패딩 제거
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               Text(
                 AppLocalizations.of(context)!.homePageTitle,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const CalendarCard(), // 분리된 달력 위젯 사용
-              const Spacer(), // 남은 공간을 채워 내용과 네비게이션 바가 겹치지 않게 함
+              const UpcomingEventsCard(), // "다가오는 일정" 카드 위젯 추가
+              const SizedBox(height: 100), // 하단 네비게이션 바와의 간격 확보
             ],
           ),
         ),

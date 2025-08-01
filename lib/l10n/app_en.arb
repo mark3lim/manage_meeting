@@ -31,5 +31,9 @@
   "menuPageTitle": "Menu",
   "@menuPageTitle": {
     "description": "Title for the menu page"
+  },
+  "upcomingEventsTitle": "Upcoming Events",
+  "@upcomingEventsTitle": {
+    "description": "Title for the section displaying upcoming events"
   }
 }

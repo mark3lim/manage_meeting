@@ -32,4 +32,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menuPageTitle => 'Menu';
+
+  @override
+  String get upcomingEventsTitle => 'Upcoming Events';
 }

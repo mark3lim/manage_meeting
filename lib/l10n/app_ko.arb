@@ -1,6 +1,6 @@
 {
   "@@locale": "ko",
-  "appTitle": "미팅 관리",
+  "appTitle": "미팅 관리자",
   "@appTitle": {
     "description": "애플리케이션의 전체 제목"
   },
@@ -31,5 +31,9 @@
   "menuPageTitle": "메뉴",
   "@menuPageTitle": {
     "description": "메뉴 페이지의 제목"
+  },
+  "upcomingEventsTitle": "다가오는 일정",
+  "@upcomingEventsTitle": {
+    "description": "다가오는 일정을 표시하는 섹션의 제목"
   }
 }
