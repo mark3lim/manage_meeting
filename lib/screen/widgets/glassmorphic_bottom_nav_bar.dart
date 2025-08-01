@@ -44,7 +44,6 @@ class _GlassmorphicBottomNavBarState
 
     final RenderBox renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
 
     _overlayEntry = OverlayEntry(
       builder: (context) => Stack(
