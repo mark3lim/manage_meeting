@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -41,10 +43,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // 1. 전체 배경화면은 흰색으로 설정
+      extendBody: true, // 1. 바디를 네비게이션 바 뒤까지 확장하여 유리 효과가 보이게 함
+      backgroundColor: Colors.white,
       body: SafeArea(
+        bottom: false, // 2. 하단 SafeArea는 네비게이션 바에서 직접 처리
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0), // 하단 패딩 제거
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,11 +58,11 @@ class _HomePageState extends State<HomePage> {
               ),
               Card(
                 margin: const EdgeInsets.only(top: 16.0),
-                color: const Color(0xFFFFFFFF), // 2. 달력은 흰색에 가까운 회색(Hex 값)
-                elevation: 0, // 그림자 제거
+                color: const Color(0xFFFFFFFF),
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),
-                  side: const BorderSide(color: Color(0xFF888888), width: 1.0), // 짙은 회색 테두리 추가
+                  side: const BorderSide(color: Color(0xFF888888), width: 1.0),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -68,10 +72,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              const Spacer(), // 3. 남은 공간을 채워 내용과 네비게이션 바가 겹치지 않게 함
             ],
           ),
         ),
       ),
+      bottomNavigationBar: _buildBottomNavBar(), // 4. 하단 네비게이션 바 추가
     );
   }
 
@@ -108,7 +114,8 @@ class _HomePageState extends State<HomePage> {
   ///
   /// @return 달력 날짜 위젯을 반환합니다.
   Widget _buildCalendarDays(BuildContext context) {
-    final daysInMonth = DateUtils.getDaysInMonth(_currentDate.year, _currentDate.month);
+    final daysInMonth =
+        DateUtils.getDaysInMonth(_currentDate.year, _currentDate.month);
     final firstDayOfMonth = DateTime(_currentDate.year, _currentDate.month, 1);
     final firstWeekday = firstDayOfMonth.weekday % 7;
     final locale = Localizations.localeOf(context).languageCode;
@@ -132,7 +139,9 @@ class _HomePageState extends State<HomePage> {
                 dayName,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: isSunday ? Colors.red : (isSaturday ? Colors.blue : Colors.black),
+                  color: isSunday
+                      ? Colors.red
+                      : (isSaturday ? Colors.blue : Colors.black),
                 ),
               ),
             );
@@ -160,7 +169,8 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.center,
               margin: const EdgeInsets.all(4.0),
               decoration: isToday
-                  ? const BoxDecoration( // 3. 오늘 날짜에는 빨간색 동그라미
+                  ? const BoxDecoration(
+                      // 3. 오늘 날짜에는 빨간색 동그라미
                       color: Colors.red,
                       shape: BoxShape.circle,
                     )
@@ -170,7 +180,9 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   color: isToday
                       ? Colors.white
-                      : (isSunday ? Colors.red : (isSaturday ? Colors.blue : Colors.black)),
+                      : (isSunday
+                          ? Colors.red
+                          : (isSaturday ? Colors.blue : Colors.black)),
                   fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
@@ -178,6 +190,71 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ],
+    );
+  }
+
+  /// iOS 26 스타일의 "리퀴드 글래스" UI를 적용한 하단 네비게이션 바를 빌드합니다.
+  ///
+  /// @return 하단 네비게이션 바 위젯을 반환합니다.
+  Widget _buildBottomNavBar() {
+    return ClipRRect(
+      // 상단 모서리를 둥글게 처리하여 부드러운 느낌을 줍니다.
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(25.0)),
+      child: BackdropFilter(
+        // 배경을 흐리게 하여 "프로스티드 글래스" 효과를 만듭니다.
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: Container(
+          height: 90.0, // 네비게이션 바의 높이
+          padding: const EdgeInsets.fromLTRB(
+              20.0, 10.0, 20.0, 25.0), // 내부 여백 (하단은 SafeArea 고려)
+          decoration: BoxDecoration(
+            // 반투명한 흰색으로 유리 느낌을 강조합니다.
+            color: Colors.white.withOpacity(0.5),
+            // 상단 테두리를 추가하여 경계를 명확히 합니다.
+            border: Border(
+              top: BorderSide(color: Colors.white.withOpacity(0.7), width: 1.5),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // 1. 햄버거 메뉴 아이콘
+              IconButton(
+                icon: const Icon(Icons.menu, color: Colors.black54, size: 28),
+                onPressed: () {
+                  // TODO: 햄버거 메뉴 기능 구현
+                },
+              ),
+              // 2. 페이지 위치를 나타내는 점
+              Row(
+                children: List.generate(3, (index) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                    width: 9.0,
+                    height: 9.0,
+                    decoration: BoxDecoration(
+                      // 현재 페이지(첫 번째)를 검은색으로, 나머지는 회색으로 표시합니다.
+                      color: index == 0
+                          ? Colors.black54
+                          : Colors.grey.withOpacity(0.6),
+                      shape: BoxShape.circle,
+                    ),
+                  );
+                }),
+              ),
+              // 3. 설정 메뉴 아이콘
+              IconButton(
+                icon: const Icon(Icons.settings_outlined,
+                    color: Colors.black54, size: 28),
+                onPressed: () {
+                  // TODO: 설정 화면으로 이동하는 기능 구현
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

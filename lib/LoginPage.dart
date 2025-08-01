@@ -73,78 +73,64 @@ class _LoginPageState extends State<LoginPage> {
   /// @return 화면에 표시될 [Widget]을 반환합니다.
   @override
   Widget build(BuildContext context) {
-    // 화면의 높이를 가져옵니다.
-    final screenHeight = MediaQuery.of(context).size.height;
-    // AppBar의 높이를 가져옵니다.
-    final appBarHeight = AppBar().preferredSize.height;
-    // 상태 표시줄의 높이를 가져옵니다.
-    final statusBarHeight = MediaQuery.of(context).padding.top;
-
-    // 비밀번호 입력 필드의 상단 위치를 계산합니다.
-    // 화면 상단에서 40% 위치에서 AppBar와 상태 표시줄 높이를 뺍니다.
-    final passwordFieldTop = screenHeight * 0.40 - appBarHeight - statusBarHeight;
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.loginPageTitle,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: passwordFieldTop > 0 ? passwordFieldTop : 0),
-            Text(
-              AppLocalizations.of(context)!.passwordLabel,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            TextField(
-              controller: _passwordController,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-              decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.passwordHint,
-                border: const OutlineInputBorder(),
-                counterText: '',
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Spacer(flex: 2), // UI를 수직 중앙에 가깝게 배치하기 위해 Spacer를 사용합니다.
+              Text(
+                AppLocalizations.of(context)!.loginPageTitle,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              maxLength: 4,
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-              autofillHints: null,
-              onSubmitted: (_) => _checkPassword(),
-            ),
-            const SizedBox(height: 16.0),
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFB4CBF0),
-                  foregroundColor: Colors.black,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: _passwordController,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.passwordHint,
+                  border: const OutlineInputBorder(),
+                  counterText: '',
                 ),
-                onPressed: _checkPassword,
-                child: Text(AppLocalizations.of(context)!.confirmButton),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+                maxLength: 4,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                autofillHints: null,
+                onSubmitted: (_) => _checkPassword(),
               ),
-            ),
-            const Spacer(),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 32.0),
-                child: Text('Made by ML'),
+              const SizedBox(height: 16.0),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFB4CBF0),
+                    foregroundColor: Colors.black,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ),
+                  onPressed: _checkPassword,
+                  child: Text(AppLocalizations.of(context)!.confirmButton),
+                ),
               ),
-            ),
-          ],
+              Spacer(flex: MediaQuery.of(context).size.height > 600 ? 2 : 1), // 하단 텍스트를 화면 아래에 고정시키기 위해 Spacer를 사용합니다.
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 32.0),
+                  child: Text('Made by ML'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
