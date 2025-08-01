@@ -35,4 +35,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upcomingEventsTitle => 'Upcoming Events';
+
+  @override
+  String get upcomingEventsDateTitle => 'Date';
+
+  @override
+  String get upcomingEventsTimeTitle => 'Time';
+
+  @override
+  String get upcomingEventsLocationTitle => 'Location';
+
+  @override
+  String get upcomingEventsNotesTitle => 'Notes';
 }

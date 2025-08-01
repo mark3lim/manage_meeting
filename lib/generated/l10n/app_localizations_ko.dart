@@ -34,4 +34,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get upcomingEventsTitle => '다가오는 일정';
+
+  @override
+  String get upcomingEventsDateTitle => '날짜';
+
+  @override
+  String get upcomingEventsTimeTitle => '시간';
+
+  @override
+  String get upcomingEventsLocationTitle => '장소';
+
+  @override
+  String get upcomingEventsNotesTitle => '내용';
 }

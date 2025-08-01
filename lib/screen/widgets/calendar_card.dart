@@ -21,7 +21,10 @@ class CalendarCard extends ConsumerWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
-        side: BorderSide(color: Theme.of(context).colorScheme.outline, width: 1.0),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outline, 
+          width: 1.0
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

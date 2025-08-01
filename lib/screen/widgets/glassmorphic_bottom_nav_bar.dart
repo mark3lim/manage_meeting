@@ -1,14 +1,18 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:manage_meeting/viewmodel/home_page_viewmodel.dart';
 
-/// [GlassmorphicBottomNavBar]는 iOS 스타일의 "리퀴드 글래스" UI를 적용한 하단 네비게이션 바입니다.
-class GlassmorphicBottomNavBar extends StatelessWidget {
+/// [GlassmorphicBottomNavBar]는 iOS 스타일의 "리퀴드 글래스" UI를 적용한 하단 네비게ATION 바입니다.
+class GlassmorphicBottomNavBar extends ConsumerWidget {
   /// [GlassmorphicBottomNavBar]의 생성자입니다.
   const GlassmorphicBottomNavBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final pageIndex = ref.watch(pageIndexProvider);
+
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(25.0)),
       child: BackdropFilter(
@@ -37,7 +41,7 @@ class GlassmorphicBottomNavBar extends StatelessWidget {
                     width: 9.0,
                     height: 9.0,
                     decoration: BoxDecoration(
-                      color: index == 0
+                      color: index == pageIndex
                           ? Colors.black54
                           : Colors.grey.withOpacity(0.6),
                       shape: BoxShape.circle,

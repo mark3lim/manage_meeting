@@ -151,6 +151,30 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'다가오는 일정'**
   String get upcomingEventsTitle;
+
+  /// No description provided for @upcomingEventsDateTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'날짜'**
+  String get upcomingEventsDateTitle;
+
+  /// No description provided for @upcomingEventsTimeTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'시간'**
+  String get upcomingEventsTimeTitle;
+
+  /// No description provided for @upcomingEventsLocationTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'장소'**
+  String get upcomingEventsLocationTitle;
+
+  /// No description provided for @upcomingEventsNotesTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'내용'**
+  String get upcomingEventsNotesTitle;
 }
 
 class _AppLocalizationsDelegate

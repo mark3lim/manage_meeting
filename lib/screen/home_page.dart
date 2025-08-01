@@ -4,6 +4,7 @@ import 'package:manage_meeting/generated/l10n/app_localizations.dart';
 import 'package:manage_meeting/screen/widgets/calendar_card.dart';
 import 'package:manage_meeting/screen/widgets/glassmorphic_bottom_nav_bar.dart';
 import 'package:manage_meeting/screen/widgets/upcoming_events_card.dart';
+import 'package:manage_meeting/viewmodel/home_page_viewmodel.dart';
 
 /// [HomePage] 클래스는 로그인 성공 후 표시되는 메인 화면을 구성하는 [ConsumerWidget] 입니다.
 ///
@@ -31,15 +32,23 @@ class HomePage extends ConsumerWidget {
         bottom: false, // 하단 SafeArea는 네비게이션 바에서 직접 처리
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0), // 하단 패딩 제거
-          child: ListView(
+          child: PageView(
+            onPageChanged: (index) =>
+                ref.read(pageIndexProvider.notifier).state = index,
             children: [
-              Text(
-                AppLocalizations.of(context)!.homePageTitle,
-                style: Theme.of(context).textTheme.headlineSmall,
+              ListView(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.homePageTitle,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const CalendarCard(), // 분리된 달력 위젯 사용
+                  const UpcomingEventsCard(), // "다가오는 일정" 카드 위젯 추가
+                  const SizedBox(height: 100), // 하단 네비게이션 바와의 간격 확보
+                ],
               ),
-              const CalendarCard(), // 분리된 달력 위젯 사용
-              const UpcomingEventsCard(), // "다가오는 일정" 카드 위젯 추가
-              const SizedBox(height: 100), // 하단 네비게이션 바와의 간격 확보
+              const Center(child: Text('Page 2')),
+              const Center(child: Text('Page 3')),
             ],
           ),
         ),

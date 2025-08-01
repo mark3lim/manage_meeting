@@ -28,3 +28,6 @@ class HomePageViewModel extends Notifier<DateTime> {
 final homePageProvider = NotifierProvider<HomePageViewModel, DateTime>(
   HomePageViewModel.new,
 );
+
+/// [pageIndexProvider]는 홈 화면의 [PageView]의 현재 페이지 인덱스를 관리합니다.
+final pageIndexProvider = StateProvider<int>((ref) => 0);

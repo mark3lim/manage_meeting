@@ -35,5 +35,21 @@
   "upcomingEventsTitle": "다가오는 일정",
   "@upcomingEventsTitle": {
     "description": "다가오는 일정을 표시하는 섹션의 제목"
+  },
+  "upcomingEventsDateTitle": "날짜",
+  "@dateTitle": {
+    "description": "날짜를 표시하는 섹션의 제목"
+  },
+  "upcomingEventsTimeTitle": "시간",
+  "@timeTitle": {
+    "description": "다가오는 일정에서 시간을 표시하는 섹션의 제목"
+  },
+  "upcomingEventsLocationTitle": "장소",
+  "@locationTitle": {
+    "description": "다가오는 일정에서 장소를 표시하는 섹션의 제목"
+  },
+  "upcomingEventsNotesTitle": "내용",
+  "@descriptionTitle": {
+    "description": "다가오는 일정에서 내용을 표시하는 섹션의 제목"
   }
 }

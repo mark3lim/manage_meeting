@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                 enableSuggestions: false,
                 autocorrect: false,
                 autofillHints: null,
-                onSubmitted: (_) => _checkPassword(),
+                // onSubmitted: (_) => _checkPassword(),
               ),
               const SizedBox(height: 16.0),
               SizedBox(

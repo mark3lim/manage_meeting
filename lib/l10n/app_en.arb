@@ -35,5 +35,21 @@
   "upcomingEventsTitle": "Upcoming Events",
   "@upcomingEventsTitle": {
     "description": "Title for the section displaying upcoming events"
+  },
+  "upcomingEventsDateTitle": "Date",
+  "@dateTitle": {
+    "description": "Ttile for the section displaying the date of the Upcoming Events"
+  },
+  "upcomingEventsTimeTitle": "Time",
+  "@timeTitle": {
+    "description": "Ttile for the section displaying the time of the Upcoming Events"
+  },
+  "upcomingEventsLocationTitle": "Location",
+  "@locationTitle": {
+    "description": "Ttile for the section displaying the location of the Upcoming Events"
+  },
+  "upcomingEventsNotesTitle": "Notes",
+  "@descriptionTitle": {
+    "description": "Ttile for the section displaying the notes of the Upcoming Events"
   }
 }
